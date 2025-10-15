@@ -40,7 +40,8 @@ Aplikasi **ReimburseRB** telah diuji menggunakan **metode Black Box Testing** ol
 
 ### 📄 DOKUMENTASI
 
-Dokumentasi lengkap mengenai desain antarmuka, struktur proyek, alur aplikasi, serta implementasi teknis dapat dilihat pada tautan berikut:
+Dokumentasi lengkap mengenai demo aplikasi, desain antarmuka, struktur proyek, alur aplikasi, serta implementasi teknis dapat dilihat pada tautan berikut:
+- Demo Aplikasi: https://drive.google.com/file/d/14ubE6JItfjNff8eKha_a6MTKihvSjRSx/view?usp=sharing
 - Figma UI Design: https://www.figma.com/design/kC5O2HK2xr3A6L4vJn9jcQ/ReimburseRB?node-id=145-120&t=qSo4z067p9SU87Xj-1
 
 ---

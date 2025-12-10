@@ -33,10 +33,15 @@ const uploadImage = async (req, res, next) => {
 
       let fileName = Date.now() + randomNumber + extensionn;
 
-      const filePath = `public/images/upload/${fileName}`;
+      // Gunakan path absolut dan pastikan folder upload ada
+      const uploadDir = path.join(__dirname, '..', 'public', 'images', 'upload');
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+      const filePath = path.join(uploadDir, fileName);
       const buffer = Buffer.from(req.body.image, "base64");
 
-      fs.writeFileSync(path.join(filePath), buffer);
+      fs.writeFileSync(filePath, buffer);
 
       req.fileName = fileName;
 
@@ -58,24 +63,6 @@ const uploadMultipleImage = async (req, res, next) => {
     next();
   } else {
     try {
-      for (let i = 0; i < image.length; i++) {
-        const item = image[i];
-        const codeExtension = item.charAt(0);
-
-        if (codeExtension == "/") {
-          continue;
-        } else if (codeExtension == "i") {
-          continue;
-        } else {
-          return res.json({
-            success: false,
-            msg: "Must an Image jpg or png",
-          });
-        }
-      }
-
-      const hasilfileName = [];
-
       for (let i = 0; i < image.length; i++) {
         const item = image[i];
 
@@ -104,10 +91,15 @@ const uploadMultipleImage = async (req, res, next) => {
 
         let fileName = Date.now() + randomNumber + extensionn;
 
-        const filePath = `public/images/upload/${fileName}`;
+        // Gunakan path absolut dan pastikan folder upload ada
+        const uploadDir = path.join(__dirname, '..', 'public', 'images', 'upload');
+        if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        const filePath = path.join(uploadDir, fileName);
         const buffer = Buffer.from(item, "base64");
 
-        fs.writeFileSync(path.join(filePath), buffer);
+        fs.writeFileSync(filePath, buffer);
         hasilfileName.push(fileName);
       }
 

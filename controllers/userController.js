@@ -411,6 +411,7 @@ module.exports = {
         img_url:
           user.image_url != null ? `${process.env.URL}${user.image_url}` : null,
       };
+      console.log(returnData);
 
       const userFamily = await UserFamily.findAll({
         where: { user_id: user.id },

@@ -1,10 +1,18 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 // Tentukan lokasi penyimpanan file yang di-upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/images/upload');
+        const uploadDir = path.join(__dirname, '..', 'public', 'images', 'upload');
+
+        // Pastikan direktori tujuan ada
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+
+        cb(null, uploadDir);
     },
     filename: function (req, file, cb) {
         const ext = path.extname(file.originalname);
